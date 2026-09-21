@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="香港电影大全 - 汇聚经典港片、王家卫、周星驰、徐克等导演作品，提供电影分类、年代筛选、高清海报及剧情简介，打造最全面的华语电影资料库。">
+    <meta name="keywords" content="香港电影大全, 港片, 王家卫, 周星驰, 徐克, 经典电影, 资料库">
+    <title>香港电影大全 - 经典港片资料库与观影指南</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #c0392b;
+            --secondary-color: #2c3e50;
+            --accent-color: #e67e22;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-light: #666666;
+            --border-radius: 8px;
+            --spacing-unit: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header & Nav */
+        header {
+            background-color: var(--secondary-color);
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        .search-box {
+            display: flex;
+        }
+
+        .search-box input {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            outline: none;
+        }
+
+        .search-box button {
+            padding: 6px 12px;
+            background-color: var(--accent-color);
+            border: none;
+            border-radius: 0 4px 4px 0;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://picsum.photos/seed/hkmoviehero/1920/600') center/cover;
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .btn-primary:hover {
+            background-color: #a93226;
+            transform: translateY(-2px);
+        }
+
+        /* Main Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Filter Section */
+        .filter-bar {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            margin-bottom: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .filter-group label {
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+
+        .filter-select, .filter-input {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            outline: none;
+        }
+
+        .filter-select:focus, .filter-input:focus {
+            border-color: var(--primary-color);
+        }
+
+        /* Grid Layout */
+        .movie-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 25px;
+        }
+
+        .movie-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .movie-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+        }
+
+        .poster-wrapper {
+            position: relative;
+            padding-top: 140%; /* 5:7 Aspect Ratio */
+            overflow: hidden;
+        }
+
+        .poster-wrapper img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .movie-card:hover .poster-wrapper img {
+            transform: scale(1.05);
+        }
+
+        .movie-info {
+            padding: 15px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .movie-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: var(--secondary-color);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .movie-meta {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .rating {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .movie-tags {
+            margin-top: auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .tag {
+            background-color: #eee;
+            color: #666;
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            border-radius: 12px;
+        }
+
+        /* Featured Section */
+        .featured-section {
+            margin-top: 60px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .section-header h2 {
+            font-size: 1.8rem;
+            color: var(--secondary-color);
+        }
+
+        .section-header::after {
+            content: '';
+            flex-grow: 1;
+        }
+
+        .director-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 20px;
+        }
+
+        .director-card {
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .director-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 0 auto 10px;
+            overflow: hidden;
+            border: 3px solid white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .director-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .director-name {
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+
+        .director-count {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            color: #bdc3c7;
+            padding: 40px 20px 20px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                height: auto;
+                padding: 15px;
+                gap: 15px;
+            }
+            
+            nav ul {
+                gap: 10px;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .filter-bar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                🎬 香港电影<span>大全</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">首页</a></li>
+                    <li><a href="#">经典港片</a></li>
+                    <li><a href="#">导演专题</a></li>
+                    <li><a href="#">演员表</a></li>
+                    <li><a href="#">关于我们</a></li>
+                </ul>
+            </nav>
+            <div class="search-box">
+                <input type="text" placeholder="搜索电影、导演或演员...">
+                <button>🔍</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>重温黄金时代的光影传奇</h1>
+        <p>汇集千部经典香港电影，从王家卫的文艺到周星驰的无厘头，为您呈现最全的华语电影资料库。</p>
+        <a href="#catalog" class="btn-primary">开始浏览</a>
+    </section>
+
+    <main class="container" id="catalog">
+        <!-- Filter Bar -->
+        <div class="filter-bar">
+            <div class="filter-group">
+                <label>年代：</label>
+                <select class="filter-select">
+                    <option value="">全部年代</option>
+                    <option value="80s">80年代</option>
+                    <option value="90s">90年代</option>
+                    <option value="00s">00年代</option>
+                    <option value="10s">10年代至今</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>类型：</label>
+                <select class="filter-select">
+                    <option value="">全部分类</option>
+                    <option value="action">动作片</option>
+                    <option value="comedy">喜剧</option>
+                    <option value="drama">剧情片</option>
+                    <option value="martial_arts">功夫/武侠</option>
+                    <option value="crime">犯罪/警匪</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>地区：</label>
+                <select class="filter-select">
+                    <option value="hk">香港</option>
+                    <option value="tw">台湾</option>
+                    <option value="mainland">内地合拍</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Movie Grid -->
+        <div class="movie-grid">
+            <!-- Movie 1 -->
+            <article class="movie-card">
+                <div class="poster-wrapper">
+                    <img src="https://picsum.photos/seed/onceuponatime/300/420" alt="喜剧之王电影海报">
+                </div>
+                <div class="movie-info">
+                    <h3 class="movie-title">喜剧之王</h3>
+                    <div class="movie-meta">
+                        <span>1999年</span>
+                        <span class="rating">★ 9.3</span>
+                    </div>
+                    <div class="movie-tags">
+                        <span class="tag">爱情</span>
+                        <span class="tag">励志</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Movie 2 -->
+            <article class="movie-card">
+                <div class="poster-wrapper">
+                    <img src="https://picsum.photos/seed/infernalaffairs/300/420" alt="无间道电影海报">
+                </div>
+                <div class="movie-info">
+                    <h3 class="movie-title">无间道</h3>
+                    <div class="movie-meta">
+                        <span>2002年</span>
+                        <span class="rating">★ 9.4</span>
+                    </div>
+                    <div class="movie-tags">
+                        <span class="tag">警匪</span>
+                        <span class="tag">悬疑</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Movie 3 -->
+            <article class="movie-card">
+                <div class="poster-wrapper">
+                    <img src="https://picsum.photos/seed/fallenangels/300/420" alt="重庆森林电影海报">
+                </div>
+                <div class="movie-info">
+                    <h3 class="movie-title">重庆森林</h3>
+                    <div class="movie-meta">
+                        <span>1994年</span>
+                        <span class="rating">★ 8.8</span>
+                    </div>
+                    <div class="movie-tags">
+                        <span class="tag">爱情</span>
+                        <span class="tag">文艺</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Movie 4 -->
+            <article class="movie-card">
+                <div class="poster-wrapper">
+                    <img src="https://picsum.photos/seed/drunkenmaster/300/420" alt="醉拳电影海报">
+                </div>
+                <div class="movie-info">
+                    <h3 class="movie-title">醉拳2</h3>
+                    <div class="movie-meta">
+                        <span>1994年</span>
+                        <span class="rating">★ 8.9</span>
+                    </div>
+                    <div class="movie-tags">
+                        <span class="tag">功夫</span>
+                        <span class="tag">动作</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Movie 5 -->
+            <article class="movie-card">
+                <div class="poster-wrapper">
+                    <img src="https://picsum.photos/seed/titanic/300/420" alt="英雄本色电影海报">
+                </div>
+                <div class="movie-info">
+                    <h3 class="movie-title">英雄本色</h3>
+                    <div class="movie-meta">
+                        <span>1986年</span>
+                        <span class="rating">★ 9.0</span>
+                    </div>
+                    <div class="movie-tags">
+                        <span class="tag">黑帮</span>
+                        <span class="tag">兄弟情</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Movie 6 -->
+            <article class="movie-card">
+                <div class="poster-wrapper">
+                    <img src="https://picsum.photos/seed/matrix/300/420" alt="黑客帝国电影海报">
+                </div>
+                <div class="movie-info">
+                    <h3 class="movie-title">黑客帝国</h3>
+                    <div class="movie-meta">
+                        <span>1999年</span>
+                        <span class="rating">★ 8.7</span>
+                    </div>
+                    <div class="movie-tags">
+                        <span class="tag">科幻</span>
+                        <span class="tag">动作</span>
+                    </div>
+                </div>
+            </article>
+            
+             <!-- Movie 7 -->
+             <article class="movie-card">
+                <div class="poster-wrapper">
+                    <img src="https://picsum.photos/seed/comet/300/420" alt="春光乍泄电影海报">
+                </div>
+                <div class="movie-info">
+                    <h3 class="movie-title">春光乍泄</h3>
+                    <div class="movie-meta">
+                        <span>1997年</span>
+                        <span class="rating">★ 8.9</span>
+                    </div>
+                    <div class="movie-tags">
+                        <span class="tag">爱情</span>
+                        <span class="tag">剧情</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Movie 8 -->
+            <article class="movie-card">
+                <div class="poster-wrapper">
+                    <img src="https://picsum.photos/seed/2046/300/420" alt="2046电影海报">
+                </div>
+                <div class="movie-info">
+                    <h3 class="movie-title">2046</h3>
+                    <div class="movie-meta">
+                        <span>2004年</span>
+                        <span class="rating">★ 8.5</span>
+                    </div>
+                    <div class="movie-tags">
+                        <span class="tag">爱情</span>
+                        <span class="tag">科幻</span>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <!-- Director Feature Section -->
+    <section class="container featured-section">
+        <div class="section-header">
+            <h2>港片大师馆</h2>
+        </div>
+        <div class="director-list">
+            <div class="director-card">
+                <div class="director-avatar">
+                    <img src="https://picsum.photos/seed/wongkarwai/200/200" alt="王家卫">
+                </div>
+                <div class="director-name">王家卫</div>
+                <div class="director-count">代表作：花样年华, 东邪西毒</div>
+            </div>
+            <div class="director-card">
+                <div class="director-avatar">
+                    <img src="https://picsum.photos/seed/stephenchow/200/200" alt="周星驰">
+                </div>
+                <div class="director-name">周星驰</div>
+                <div class="director-count">代表作：大话西游, 少林足球</div>
+            </div>
+            <div class="director-card">
+                <div class="director-avatar">
+                    <img src="https://picsum.photos/seed/jeanyee/200/200" alt="徐克">
+                </div>
+                <div class="director-name">徐克</div>
+                <div class="director-count">代表作：黄飞鸿, 东方不败</div>
+            </div>
+            <div class="director-card">
+                <div class="director-avatar">
+                    <img src="https://picsum.photos/seed/woody/200/200" alt="吴宇森">
+                </div>
+                <div class="director-name">吴宇森</div>
+                <div class="director-count">代表作：英雄本色, 鸳鸯蝴蝶</div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>关于香港电影大全</h3>
+                <p>本站致力于收录和整理香港电影的历史资料与经典作品，为影迷提供一个免费、开放的观影与资料查询平台。</p>
+            </div>
+            <div class="footer-col">
+                <h3>快速链接</h3>
+                <ul>
+                    <li><a href="#">最新上映</a></li>
+                    <li><a href="#">经典榜单</a></li>
+                    <li><a href="#">电影分类</a></li>
+                    <li><a href="#">影人名录</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>友情链接</h3>
+                <ul>
+                    <li><a href="#">华语电影网</a></li>
+                    <li><a href="#">豆瓣电影</a></li>
+                    <li><a href="#">IMDb</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2023 香港电影大全 版权所有 | 仅供学习交流使用
+        </div>
+    </footer>
+
+</body>
+</html>
