@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>哈卡-魔兽世界经典怀旧与硬核攻略指南</title>
+    <meta name="description" content="哈卡攻略网提供魔兽世界60级怀旧服、经典旧世及硬核模式下的哈卡林恩（哈卡）BOSS打法详解、掉落装备查询及团队配置建议。">
+    <meta name="keywords" content="哈卡, 魔兽世界, 怀旧服, 哈卡林恩, 黑暗之潮, 团本攻略, 装备掉落">
+    <style>
+        :root {
+            --primary-color: #1a1a1a;
+            --accent-color: #d4af37;
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --text-main: #e0e0e0;
+            --text-muted: #a0a0a0;
+            --danger-color: #e74c3c;
+            --success-color: #2ecc71;
+            --border-radius: 8px;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* 布局容器 */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 顶部导航 */
+        header {
+            background-color: rgba(18, 18, 18, 0.95);
+            border-bottom: 1px solid #333;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--accent-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--text-main);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--accent-color);
+        }
+
+        /* Hero 区域 */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)), url('https://picsum.photos/seed/haakahero/1600/600.jpg') no-repeat center center/cover;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.8);
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            color: #ccc;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--accent-color);
+            color: #000;
+            font-weight: bold;
+            border-radius: var(--border-radius);
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .btn:hover {
+            background-color: #f1c40f;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--accent-color);
+            color: var(--accent-color);
+            margin-left: 10px;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--accent-color);
+            color: #000;
+        }
+
+        /* 核心数据 */
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            background-color: var(--card-bg);
+            padding: 30px;
+            margin-top: -50px;
+            border-radius: var(--border-radius);
+            position: relative;
+            z-index: 10;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+
+        .stat-item h3 {
+            font-size: 32px;
+            color: var(--accent-color);
+            margin-bottom: 5px;
+        }
+
+        .stat-item p {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        /* 主要内容区 */
+        main {
+            padding: 50px 0;
+        }
+
+        .section-title {
+            font-size: 28px;
+            margin-bottom: 30px;
+            border-left: 5px solid var(--accent-color);
+            padding-left: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .section-title span.more {
+            font-size: 14px;
+            font-weight: normal;
+            color: var(--text-muted);
+            border: 1px solid #444;
+            padding: 4px 10px;
+            border-radius: 4px;
+        }
+
+        /* 攻略列表 */
+        .guide-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            transition: transform 0.3s;
+            border: 1px solid #333;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+        }
+
+        .card-img {
+            height: 180px;
+            background-color: #333;
+            position: relative;
+        }
+
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-tag {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: rgba(0,0,0,0.7);
+            color: #fff;
+            padding: 2px 8px;
+            font-size: 12px;
+            border-radius: 4px;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-title {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: #666;
+            border-top: 1px solid #333;
+            padding-top: 15px;
+        }
+
+        /* 装备掉落表格 */
+        .drop-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        .drop-table th, .drop-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #333;
+        }
+
+        .drop-table th {
+            background-color: #2a2a2a;
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        .drop-table tr:hover {
+            background-color: #252525;
+        }
+
+        .quality-legendary { color: #ff8000; }
+        .quality-rare { color: #0070dd; }
+        .quality-uncommon { color: #1eff00; }
+
+        /* 常见问题 */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background-color: var(--card-bg);
+            margin-bottom: 15px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            background-color: #252525;
+        }
+
+        .faq-question:hover {
+            background-color: #2f2f2f;
+        }
+
+        .faq-answer {
+            padding: 0 20px 20px;
+            color: var(--text-muted);
+            display: none;
+            border-top: 1px solid #333;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-question {
+            color: var(--accent-color);
+        }
+
+        /* 页脚 */
+        footer {
+            background-color: #0a0a0a;
+            padding: 40px 0 20px;
+            margin-top: 60px;
+            border-top: 1px solid #333;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-col h4 {
+            color: #fff;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .footer-col p {
+            color: #888;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: #888;
+            font-size: 14px;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #222;
+            color: #555;
+            font-size: 12px;
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 32px; }
+            .nav-wrapper { flex-direction: column; gap: 15px; }
+            nav ul { gap: 15px; font-size: 14px; }
+            .stats-bar { grid-template-columns: 1fr 1fr; }
+            .footer-grid { grid-template-columns: 1fr; gap: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container nav-wrapper">
+        <a href="#" class="logo">哈卡<span>攻略网</span></a>
+        <nav>
+            <ul>
+                <li><a href="#" class="active">首页</a></li>
+                <li><a href="#">副本介绍</a></li>
+                <li><a href="#">BOSS打法</a></li>
+                <li><a href="#">装备掉落</a></li>
+                <li><a href="#">硬核模式</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>哈卡林恩：黑暗之潮的终结</h1>
+        <p>深入安卡哈特废墟，挑战经典的空中BOSS。本站提供60级怀旧服及硬核模式下哈卡的完整战术指南、装备属性分析与团队配置。</p>
+        <div>
+            <a href="#guides" class="btn">查看攻略</a>
+            <a href="#drops" class="btn btn-outline">查询装备</a>
+        </div>
+    </div>
+</section>
+
+<div class="container">
+    <div class="stats-bar">
+        <div class="stat-item">
+            <h3>60级</h3>
+            <p>怀旧服版本</p>
+        </div>
+        <div class="stat-item">
+            <h3>5.1%</h3>
+            <p>稀有掉率 (哈卡之眼)</p>
+        </div>
+        <div class="stat-item">
+            <h3>2小时</h3>
+            <p>刷新周期 (硬核模式)</p>
+        </div>
+        <div class="stat-item">
+            <h3>4</h3>
+            <p>核心阶段 (哈卡形态)</p>
+        </div>
+    </div>
+</div>
+
+<main class="container" id="guides">
+    <section>
+        <div class="section-title">
+            <h2>核心副本攻略</h2>
+            <span class="more">更多攻略 &gt;</span>
+        </div>
+        
+        <div class="guide-grid">
+            <article class="card">
+                <div class="card-img">
+                    <img src="https://picsum.photos/seed/haakaboss/400/250.jpg" alt="哈卡BOSS战">
+                    <span class="card-tag">硬核必看</span>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">硬核模式：死亡倒计时与重置机制</h3>
+                    <p class="card-desc">在硬核模式下，死亡将导致角色重置回最近的安全点。本文详细解析哈卡刷新时间、死亡惩罚及如何利用刷新空档期规避风险。</p>
+                    <div class="card-meta">
+                        <span>阅读量: 12k</span>
+                        <span>难度: ★★★★★</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-img">
+                    <img src="https://picsum.photos/seed/haakaspawn/400/250.jpg" alt="哈卡之眼掉落">
+                    <span class="card-tag">掉落</span>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">哈卡之眼：饰品属性与合成指南</h3>
+                    <p class="card-desc">哈卡之眼是怀旧服中最强力的饰品之一。本文提供详细的属性分析、合成材料来源以及与“无情角斗士”徽章的对比推荐。</p>
+                    <div class="card-meta">
+                        <span>阅读量: 8.5k</span>
+                        <span>难度: ★★★★</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-img">
+                    <img src="https://picsum.photos/seed/haakateam/400/250.jpg" alt="团队配置">
+                    <span class="card-tag">配置</span>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">安卡哈特团队配置与职业分工</h3>
+                    <p class="card-desc">应对哈卡的空中战，团队需要怎样的治疗量和DPS？本文提供T、奶、DPS的具体职业选择与站位建议。</p>
+                    <div class="card-meta">
+                        <span>阅读量: 15k</span>
+                        <span>难度: ★★★</span>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <section id="drops" style="margin-top: 60px;">
+        <div class="section-title">
+            <h2>重点装备掉落一览</h2>
+            <span class="more">查看全图鉴 &gt;</span>
+        </div>
+        <table class="drop-table">
+            <thead>
+                <tr>
+                    <th>装备名称</th>
+                    <th>部位</th>
+                    <th>等级要求</th>
+                    <th>属性简述</th>
+                    <th>掉落来源</th>
+                    <th>稀有度</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>哈卡之眼</td>
+                    <td>饰品</td>
+                    <td>60</td>
+                    <td>使用后攻击速度提高20%，持续15秒，造成额外暗影伤害。</td>
+                    <td>哈卡林恩 (100%)</td>
+                    <td class="quality-legendary">史诗</td>
+                </tr>
+                <tr>
+                    <td>艾露恩之怒</td>
+                    <td>盾牌</td>
+                    <td>60</td>
+                    <td>击中时有5%几率使施法者获得一个持续10秒的“奥术强化”效果。</td>
+                    <td>哈卡林恩 (约25%)</td>
+                    <td class="quality-legendary">史诗</td>
+                </tr>
+                <tr>
+                    <td>哈卡莱之刃</td>
+                    <td>主手武器</td>
+                    <td>60</td>
+                    <td>攻击速度1.7，每5秒造成约22点自然伤害。</td>
+                    <td>哈卡林恩 (约25%)</td>
+                    <td class="quality-legendary">史诗</td>
+                </tr>
+                <tr>
+                    <td>哈卡莱徽记</td>
+                    <td>披风</td>
+                    <td>60</td>
+                    <td>使施法者受到的物理伤害减少1%。</td>
+                    <td>哈卡林恩 (约25%)</td>
+                    <td class="quality-rare">稀有</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section style="margin-top: 60px;">
+        <div class="section-title">
+            <h2>常见问题 (FAQ)</h2>
+        </div>
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">哈卡刷新时间是多少？</div>
+                <div class="faq-answer">在经典旧世（60级）中，哈卡林恩通常每2小时刷新一次。在硬核模式中，为了平衡难度，刷新时间可能会略有调整，请以服务器公告为准。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">哈卡之眼可以交易吗？</div>
+                <div class="faq-answer">可以。哈卡之眼在掉落后是非绑定的，因此可以在服务器内的拍卖行或玩家之间自由交易。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">硬核模式下死在哈卡那里会怎样？</div>
+                <div class="faq-answer">在硬核模式下，死亡会重置角色到最近的安全点，且通常伴随着金币损失和装备耐久度下降。建议在挑战前确保装备耐久度满且携带足够的治疗药水。</div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="logo">哈卡<span>攻略网</span></div>
+                <p style="margin-top: 15px;">专注魔兽世界哈卡林恩BOSS攻略、装备掉落查询及硬核模式生存指南。为每一位追求极致挑战的玩家提供数据支持。</p>
+            </div>
+            <div class="footer-col">
+                <h4>快速导航</h4>
+                <ul>
+                    <li><a href="#">副本介绍</a></li>
+                    <li><a href="#">BOSS技能解析</a></li>
+                    <li><a href="#">装备掉落表</a></li>
+                    <li><a href="#">团队副本列表</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>游戏指南</h4>
+                <ul>
+                    <li><a href="#">职业加点推荐</a></li>
+                    <li><a href="#">野外生存技巧</a></li>
+                    <li><a href="#">装备附魔大全</a></li>
+                    <li><a href="#">坐骑获取途径</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>关于我们</h4>
+                <ul>
+                    <li><a href="#">联系站长</a></li>
+                    <li><a href="#">免责声明</a></li>
+                    <li><a href="#">加入团队</a></li>
+                    <li><a href="#">赞助支持</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2023 哈卡攻略网. All Rights Reserved. 本站内容仅供游戏参考，非官方网站。
+        </div>
+    </div>
+</footer>
+
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+
+<script>
+    // 简单的FAQ折叠逻辑
+    document.addEventListener('DOMContentLoaded', function() {
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                // 关闭其他打开的项
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                // 切换当前项
+                item.classList.toggle('active');
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
