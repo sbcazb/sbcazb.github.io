@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>突袭OL-硬核战术射击与地下城冒险</title>
+    <meta name="description" content="突袭OL是一款以现代军事战术为背景的3D射击MMORPG，提供PVP竞技、PVE副本挑战及大规模团队作战体验。探索地下城、定制角色装备，开启你的战术射击之旅。">
+    <meta name="keywords" content="突袭OL, 突袭OL官网, 硬核射击游戏, MMORPG, 战术射击, 地下城副本">
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #e63946; /* 战术红 */
+            --secondary-color: #1d3557; /* 军装蓝 */
+            --accent-color: #457b9d; /* 装备银 */
+            --bg-dark: #0f1115;
+            --bg-card: #1a1d24;
+            --text-main: #f1faee;
+            --text-muted: #a8dadc;
+            --spacing-unit: 1rem;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* 布局容器 */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        /* 顶部导航 */
+        header {
+            background-color: rgba(15, 17, 21, 0.95);
+            border-bottom: 1px solid #333;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 0.8rem 0;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            font-size: 1rem;
+            color: var(--text-main);
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-color);
+        }
+
+        .btn-download {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 4px;
+            font-weight: bold;
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-download:hover {
+            background-color: transparent;
+            color: var(--primary-color);
+        }
+
+        /* Hero 区域 */
+        .hero {
+            position: relative;
+            height: 600px;
+            background: linear-gradient(to bottom, rgba(15, 17, 21, 0.3), var(--bg-dark)), url('https://picsum.photos/seed/battlefield/1920/1080') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            z-index: 2;
+            max-width: 800px;
+            padding: 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.8);
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: #c92a37;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(230, 57, 70, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background-color: white;
+            color: var(--bg-dark);
+        }
+
+        /* 特性网格 */
+        .features {
+            padding: 4rem 0;
+            background-color: var(--bg-dark);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+        }
+
+        .section-title p {
+            color: var(--text-muted);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background-color: var(--bg-card);
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid #333;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-color);
+        }
+
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* 游戏模式展示 */
+        .gameplay {
+            padding: 4rem 0;
+            background-color: #16181d;
+        }
+
+        .mode-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .mode-image {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .mode-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+
+        .mode-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .mode-content h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .mode-list li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .mode-list li::before {
+            content: '>';
+            color: var(--primary-color);
+            margin-right: 0.8rem;
+            font-weight: bold;
+        }
+
+        /* 数据统计 */
+        .stats {
+            background-color: var(--primary-color);
+            padding: 3rem 0;
+            color: white;
+        }
+
+        .stats-grid {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            text-align: center;
+            gap: 2rem;
+        }
+
+        .stat-item h3 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* 装备展示 */
+        .gear-section {
+            padding: 4rem 0;
+        }
+
+        .gear-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gear-item {
+            position: relative;
+            border-radius: 6px;
+            overflow: hidden;
+            aspect-ratio: 1/1;
+            cursor: pointer;
+        }
+
+        .gear-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.3s;
+        }
+
+        .gear-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.9));
+            padding: 1.5rem 1rem 1rem;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+
+        .gear-item:hover .gear-overlay {
+            transform: translateY(0);
+        }
+
+        .gear-overlay h4 {
+            font-size: 1.1rem;
+            color: white;
+        }
+
+        .gear-overlay span {
+            font-size: 0.9rem;
+            color: var(--accent-color);
+        }
+
+        /* FAQ */
+        .faq {
+            padding: 4rem 0;
+            background-color: var(--bg-card);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #333;
+            padding: 1.5rem 0;
+        }
+
+        .faq-question {
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .faq-answer {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            display: none;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-question::after {
+            content: '-';
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0b0c0e;
+            padding: 3rem 0;
+            border-top: 1px solid #333;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 1.2rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.6rem;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #222;
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .nav-links {
+                display: none; /* 移动端简化：隐藏导航链接 */
+            }
+
+            .mode-container {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .hero {
+                height: 500px;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-wrapper">
+            <div class="logo">突袭OL</div>
+            <nav class="nav-links">
+                <a href="#" class="active">首页</a>
+                <a href="#features">游戏特色</a>
+                <a href="#gameplay">游戏模式</a>
+                <a href="#gear">装备系统</a>
+                <a href="#faq">玩家问答</a>
+            </nav>
+            <a href="#" class="btn-download">立即下载</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>硬核战术射击<br>地下城冒险</h1>
+                <p>体验最真实的现代战场，与全球玩家同台竞技。在突袭OL中，每一发子弹都关乎生死，每一次战术决策都将决定胜负。</p>
+                <div class="hero-buttons">
+                    <a href="#" class="btn-primary">免费下载游戏</a>
+                    <a href="#" class="btn-secondary">观看宣传片</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="features">
+            <div class="container">
+                <div class="section-title">
+                    <h2>为什么选择突袭OL</h2>
+                    <p>深度还原军事战术，打造沉浸式射击体验</p>
+                </div>
+                <div class="feature-grid">
+                    <article class="feature-card">
+                        <div class="feature-icon">🎯</div>
+                        <h3>真实弹道物理</h3>
+                        <p>摒弃传统网游的“魔法射击”，引入真实的空气阻力、后坐力模型和弹道下坠计算，考验玩家的枪法与预判。</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="feature-icon">🏰</div>
+                        <h3>动态地下城</h3>
+                        <p>不仅是PVP，更有海量精心设计的副本。利用地形、掩体和战术配合，攻克强大的AI守卫，获取稀有战利品。</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="feature-icon">🛠️</div>
+                        <h3>深度装备定制</h3>
+                        <p>数百种武器配件、战术背心和角色技能树。通过DIY打造独一无二的战斗风格，打造专属的精英小队。</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gameplay Section -->
+        <section id="gameplay" class="gameplay">
+            <div class="container">
+                <div class="mode-container">
+                    <div class="mode-image">
+                        <img src="https://picsum.photos/seed/tacticalwarfare/800/600" alt="战术竞技模式">
+                    </div>
+                    <div class="mode-content">
+                        <h3>多样玩法模式</h3>
+                        <ul class="mode-list">
+                            <li><strong>团队死斗：</strong> 经典的5v5快节奏对战，击杀数最高的队伍获胜。</li>
+                            <li><strong>爆破模式：</strong> 经典的拆弹与反拆弹玩法，考验团队协作与爆破时机。</li>
+                            <li><strong>夺旗行动：</strong> 在开放地图中争夺旗帜，结合载具与跑酷的刺激体验。</li>
+                            <li><strong>生存挑战：</strong> 无尽波次的敌人进攻，测试你的生存极限与火力配置。</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats">
+            <div class="container stats-grid">
+                <div class="stat-item">
+                    <h3>500万+</h3>
+                    <p>全球注册玩家</p>
+                </div>
+                <div class="stat-item">
+                    <h3>50万+</h3>
+                    <p>在线同时游玩</p>
+                </div>
+                <div class="stat-item">
+                    <h3>100+</h3>
+                    <p>种武器改装方案</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gear Showcase -->
+        <section id="gear" class="gear-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>热门武器装备</h2>
+                    <p>打造你的火力配置</p>
+                </div>
+                <div class="gear-grid">
+                    <div class="gear-item">
+                        <img src="https://picsum.photos/seed/gun1/400/400" alt="M4A1突击步枪">
+                        <div class="gear-overlay">
+                            <h4>M4A1 突击步枪</h4>
+                            <span>均衡型 / 全距离适用</span>
+                        </div>
+                    </div>
+                    <div class="gear-item">
+                        <img src="https://picsum.photos/seed/gun2/400/400" alt="AWM 狙击步枪">
+                        <div class="gear-overlay">
+                            <h4>AWM 狙击步枪</h4>
+                            <span>高伤害 / 远程压制</span>
+                        </div>
+                    </div>
+                    <div class="gear-item">
+                        <img src="https://picsum.photos/seed/gun3/400/400" alt="MP5 冲锋枪">
+                        <div class="gear-overlay">
+                            <h4>MP5 冲锋枪</h4>
+                            <span>高射速 / 近战压制</span>
+                        </div>
+                    </div>
+                    <div class="gear-item">
+                        <img src="https://picsum.photos/seed/gear1/400/400" alt="战术护甲">
+                        <div class="gear-overlay">
+                            <h4>重型战术护甲</h4>
+                            <span>防御力提升 / 移动减慢</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="faq">
+            <div class="container">
+                <div class="section-title">
+                    <h2>常见问题</h2>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">游戏支持哪些平台？</div>
+                    <div class="faq-answer">目前游戏支持Windows PC平台，建议配置可前往官网查看详细要求。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">游戏是否需要付费？</div>
+                    <div class="faq-answer">突袭OL采用免费游玩模式，游戏内包含商城道具，但所有核心战斗内容均可免费体验。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">如何加入官方战队？</div>
+                    <div class="faq-answer">关注官方微博和Discord社区，定期会发布战队招募公告和比赛信息。</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <div class="logo">突袭OL</div>
+                    <p style="margin-top: 1rem;">致力于提供最硬核、最真实的战术射击体验。</p>
+                </div>
+                <div class="footer-col">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="#">关于我们</a></li>
+                        <li><a href="#">游戏下载</a></li>
+                        <li><a href="#">玩家论坛</a></li>
+                        <li><a href="#">支持中心</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>法律信息</h4>
+                    <ul>
+                        <li><a href="#">用户协议</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                        <li><a href="#">防沉迷系统</a></li>
+                        <li><a href="#">未成年人保护</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>关注我们</h4>
+                    <ul>
+                        <li><a href="#">官方微博</a></li>
+                        <li><a href="#">微信公众号</a></li>
+                        <li><a href="#">Bilibili</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 突袭OL 版权所有. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 简单的 FAQ 交互逻辑
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', event => {
+                const parent = item.parentElement;
+                parent.classList.toggle('active');
+            });
+        });
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
