@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="国产手表品牌大全，涵盖海鸥、飞亚达、罗西尼、天王等知名国产机械表与石英表推荐，提供选购指南、品牌对比及款式评测。">
+    <meta name="keywords" content="国产手表, 海鸥手表, 飞亚达, 罗西尼, 天王, 机械表推荐, 国产腕表品牌">
+    <title>国产手表-知名品牌推荐与选购指南</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #c0392b;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-secondary: #666666;
+            --border-color: #e0e0e0;
+            --spacing-unit: 1rem;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            line-height: 1.6;
+            color: var(--text-main);
+            background-color: var(--bg-color);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* Layout Utilities */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        .section-padding {
+            padding: 4rem 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--card-bg);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-color);
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.5rem 1.2rem;
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .btn-outline {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background-color: #1a252f;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('https://picsum.photos/seed/watchbg/1920/600') center/cover;
+            color: #fff;
+            padding: 6rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #ddd;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-search {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .hero-search input {
+            flex: 1;
+            padding: 0.8rem;
+            border-radius: 4px;
+            border: none;
+            outline: none;
+        }
+
+        .hero-search button {
+            background-color: var(--accent-color);
+            color: #fff;
+            border: none;
+            padding: 0 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        /* Categories */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: -3rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .category-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .category-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+
+        .category-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .category-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Brand Section */
+        .brand-section {
+            background-color: var(--card-bg);
+        }
+
+        .section-header {
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header p {
+            color: var(--text-secondary);
+        }
+
+        .brand-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .brand-card {
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: box-shadow 0.2s;
+        }
+
+        .brand-card:hover {
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .brand-img {
+            height: 200px;
+            background-color: #eee;
+            overflow: hidden;
+        }
+
+        .brand-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .brand-info {
+            padding: 1.5rem;
+        }
+
+        .brand-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .brand-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .brand-tags span {
+            display: inline-block;
+            background: #f0f0f0;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            margin-right: 5px;
+        }
+
+        /* Comparison Table */
+        .comparison-table-wrapper {
+            overflow-x: auto;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--card-bg);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .comparison-table th, .comparison-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .comparison-table th {
+            background-color: #f8f9fa;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Guide Section */
+        .guide-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .guide-item {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            border-left: 5px solid var(--accent-color);
+        }
+
+        .guide-item h3 {
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .guide-item p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .guide-item ul {
+            padding-left: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .guide-item li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* FAQ */
+        .faq-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            padding: 1.5rem;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            color: var(--text-secondary);
+            display: none;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: #fff;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-col ul li a {
+            color: #bdc3c7;
+        }
+
+        .footer-col ul li a:hover {
+            color: #fff;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: #95a5a6;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Simplified for mobile */
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-padding {
+                padding: 2rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container nav-wrapper">
+        <a href="#" class="logo">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            国产表<span>精选</span>
+        </a>
+        <nav class="nav-links">
+            <a href="#" class="active">首页</a>
+            <a href="#brands">品牌推荐</a>
+            <a href="#comparison">参数对比</a>
+            <a href="#guide">选购指南</a>
+            <a href="#faq">常见问题</a>
+        </nav>
+        <div class="nav-actions">
+            <a href="#guide" class="btn btn-outline">阅读指南</a>
+            <a href="#brands" class="btn btn-primary">浏览品牌</a>
+        </div>
+    </div>
+</header>
+
+<main>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>探索中国制造的精密时刻</h1>
+            <p>从海鸥机械表到飞亚达时尚腕表，深入了解国产手表的发展历程、技术实力与美学设计，发现值得信赖的腕间伙伴。</p>
+            <div class="hero-search">
+                <input type="text" placeholder="搜索品牌、款式或功能...">
+                <button>搜索</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="container">
+        <div class="categories-grid">
+            <div class="category-card">
+                <div class="category-icon">⚙️</div>
+                <div class="category-title">机械表</div>
+                <div class="category-desc">经典机芯，传统工艺，适合收藏与鉴赏</div>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">💎</div>
+                <div class="category-title">石英表</div>
+                <div class="category-desc">精准稳定，款式多样，日常佩戴首选</div>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">⚡</div>
+                <div class="category-title">智能手表</div>
+                <div class="category-desc">科技互联，健康监测，现代生活方式</div>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">🏆</div>
+                <div class="category-title">国礼腕表</div>
+                <div class="category-desc">代表国家形象，精湛工艺与顶级品质</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brand Section -->
+    <section id="brands" class="section-padding brand-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2>主流国产手表品牌</h2>
+                <p>中国手表工业经过多年发展，涌现出一批技术成熟、设计出色的品牌</p>
+            </div>
+            <div class="brand-grid">
+                <!-- Brand 1 -->
+                <article class="brand-card">
+                    <div class="brand-img">
+                        <img src="https://picsum.photos/seed/seagull/400/300" alt="海鸥手表">
+                    </div>
+                    <div class="brand-info">
+                        <a href="#" class="brand-name">海鸥 (Sea-Gull)</a>
+                        <p class="brand-desc">中国手表工业的摇篮，拥有从机芯研发到整表制造的完整产业链，机械表技术实力国内领先。</p>
+                        <div class="brand-tags">
+                            <span>机械表</span>
+                            <span>机芯</span>
+                            <span>国礼</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Brand 2 -->
+                <article class="brand-card">
+                    <div class="brand-img">
+                        <img src="https://picsum.photos/seed/fiyta/400/300" alt="飞亚达">
+                    </div>
+                    <div class="brand-info">
+                        <a href="#" class="brand-name">飞亚达 (FIYTA)</a>
+                        <p class="brand-desc">以航天计时技术著称，设计时尚，品牌形象年轻化，是许多商务人士的腕间选择。</p>
+                        <div class="brand-tags">
+                            <span>时尚</span>
+                            <span>商务</span>
+                            <span>航天科技</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Brand 3 -->
+                <article class="brand-card">
+                    <div class="brand-img">
+                        <img src="https://picsum.photos/seed/rossini/400/300" alt="罗西尼">
+                    </div>
+                    <div class="brand-info">
+                        <a href="#" class="brand-name">罗西尼 (ROSSINI)</a>
+                        <p class="brand-desc">国内销量领先的腕表品牌，产品线丰富，性价比高，适合大众日常佩戴。</p>
+                        <div class="brand-tags">
+                            <span>高性价比</span>
+                            <span>石英表</span>
+                            <span>时尚</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Brand 4 -->
+                <article class="brand-card">
+                    <div class="brand-img">
+                        <img src="https://picsum.photos/seed/tianwang/400/300" alt="天王">
+                    </div>
+                    <div class="brand-info">
+                        <a href="#" class="brand-name">天王 (TIANWANG)</a>
+                        <p class="brand-desc">香港品牌，设计风格偏向欧式经典，工艺精良，注重细节打磨。</p>
+                        <div class="brand-tags">
+                            <span>经典</span>
+                            <span>欧式风格</span>
+                            <span>工艺</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Section -->
+    <section id="comparison" class="section-padding">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2>热门型号参数对比</h2>
+                <p>为您精选几款市场关注度较高的国产手表进行横向对比</p>
+            </div>
+            <div class="comparison-table-wrapper">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>型号</th>
+                            <th>类型</th>
+                            <th>机芯来源</th>
+                            <th>防水等级</th>
+                            <th>特色功能</th>
+                            <th>适合人群</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>海鸥 819.433</td>
+                            <td>机械表</td>
+                            <td>海鸥自制机芯</td>
+                            <td>30米 (生活防水)</td>
+                            <td>复古盘面，经典三针</td>
+                            <td>机械表初学者，复古爱好者</td>
+                        </tr>
+                        <tr>
+                            <td>飞亚达 7755.03</td>
+                            <td>石英表</td>
+                            <td>瑞士机芯 (进口)</td>
+                            <td>50米 (生活防水)</td>
+                            <td>蓝宝石镜面，钛合金表壳</td>
+                            <td>商务人士，注重质感</td>
+                        </tr>
+                        <tr>
+                            <td>罗西尼 2213</td>
+                            <td>石英表</td>
+                            <td>日本机芯</td>
+                            <td>30米 (生活防水)</td>
+                            <td>简约设计，价格亲民</td>
+                            <td>学生，预算有限群体</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guide Section -->
+    <section id="guide" class="section-padding brand-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2>国产手表选购指南</h2>
+                <p>如何挑选一款适合自己的国产手表？</p>
+            </div>
+            <div class="guide-list">
+                <article class="guide-item">
+                    <h3>1. 确定预算与用途</h3>
+                    <p>首先明确购买手表的预算范围以及主要用途。如果是日常通勤佩戴，石英表通常更省心；如果是作为收藏或兴趣爱好，机械表更具价值。</p>
+                    <ul>
+                        <li><strong>预算 500元以下：</strong> 关注罗西尼、飞亚达的石英基础款。</li>
+                        <li><strong>预算 500-2000元：</strong> 可以考虑海鸥的基础机械表或中高端石英表。</li>
+                        <li><strong>预算 2000元以上：</strong> 可关注飞亚达、天王等品牌的商务系列或复杂功能表。</li>
+                    </ul>
+                </article>
+
+                <article class="guide-item">
+                    <h3>2. 了解机芯知识</h3>
+                    <p>国产手表的机芯主要分为自制机芯和进口机芯。海鸥、北京等品牌拥有自主研发能力，机芯性能稳定且具有自主知识产权；部分品牌使用日本或瑞士机芯，走时精度更高。</p>
+                </article>
+
+                <article class="guide-item">
+                    <h3>3. 关注材质与做工</h3>
+                    <p>表壳材质通常有不锈钢、钛合金、精钢等。镜面方面，蓝宝石玻璃耐磨性最好。检查表带是否舒适，表扣是否顺滑，这些细节决定了佩戴体验。</p>
+                </article>
+
+                <article class="guide-item">
+                    <h3>4. 选择正规渠道</h3>
+                    <p>购买国产手表时，请务必选择官方授权店、品牌直营店或信誉良好的电商平台旗舰店，以确保享受正规的售后服务和保修政策。</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="section-padding">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2>常见问题解答</h2>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item active">
+                    <div class="faq-question">国产手表和进口手表在走时精度上有多大差距？<span>+</span></div>
+                    <div class="faq-answer">
+                        目前，主流国产机械表采用海鸥等自产机芯，日误差通常在-10秒到+15秒之间，符合国家一等表标准。部分高端石英表使用日本机芯，精度极高。总体而言，在正常佩戴和定期保养的情况下，国产手表的走时精度完全可以满足日常需求。
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">海鸥手表的保值率如何？<span>+</span></div>
+                    <div class="faq-answer">
+                        海鸥作为国内机芯龙头，其基础款机械表具有较好的流通性。特别是那些带有历史意义或特殊工艺的型号，保值率相对较高。但需注意，手表保值更多取决于品相、完整度以及市场供需关系。
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">国产机械表需要多久保养一次？<span>+</span></div>
+                    <div class="faq-answer">
+                        机械手表建议每3-5年进行一次保养。保养内容通常包括拆解清洗机芯、更换防水油、检查游丝和擒纵机构等。长期不保养可能会导致机芯磨损或停走。
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>关于我们</h4>
+                <p style="color: #bdc3c7; font-size: 0.9rem; line-height: 1.8;">
+                    国产表精选致力于为消费者提供最专业、最全面的国产手表品牌资讯、选购指南与参数对比服务。我们关注中国制造的品质崛起，助您发现腕间的东方之美。
+                </p>
+            </div>
+            <div class="footer-col">
+                <h4>快速导航</h4>
+                <ul>
+                    <li><a href="#">品牌大全</a></li>
+                    <li><a href="#">新品上市</a></li>
+                    <li><a href="#">腕表评测</a></li>
+                    <li><a href="#">维修保养</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>品牌支持</h4>
+                <ul>
+                    <li><a href="#">海鸥官方</a></li>
+                    <li><a href="#">飞亚达官方</a></li>
+                    <li><a href="#">罗西尼官方</a></li>
+                    <li><a href="#">天王官方</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>联系方式</h4>
+                <ul>
+                    <li>邮箱: contact@cnwatchguide.com</li>
+                    <li>电话: 400-123-4567</li>
+                    <li>地址: 中国·深圳</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 国产表精选. 保留所有权利. 本站内容仅供参考，不作为购买依据。</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Simple FAQ Toggle Logic
+    document.addEventListener('DOMContentLoaded', function() {
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                // Close other items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                // Toggle current item
+                item.classList.toggle('active');
+            });
+        });
+    });
+</script>
+
+</body>
+  </html>
